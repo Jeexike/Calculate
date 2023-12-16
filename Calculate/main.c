@@ -180,9 +180,6 @@ int main()
 			exit(1);
 		}
 	}
-	free(tokens[0]);
-	free(tokens[1]);
-	free(tokens[2]);
 	free(tokens);
 	return 0;
 
