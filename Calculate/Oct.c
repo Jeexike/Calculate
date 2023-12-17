@@ -113,3 +113,29 @@ char* convertToOctrev(long int num)
     return(oct);
     free(oct);
 }
+
+void tildaOct(long int num)
+{
+    long int num2 = -num;
+    char* oct = NULL;
+    oct = calloc(100, sizeof(char));
+    int i = 0;
+    if (num2 == 0)
+    {
+        for (int i = 0; i != 1; i++)
+        {
+            oct[i] = 48;
+        }
+    }
+    while (num2 != 0)
+    {
+        int temp = 0;
+        temp = num2 % 8;
+        oct[i] = temp + 48;
+        i++;
+        num2 = num2 / 8;
+    }
+    rev(oct);
+    printf("-0%s (%d)", oct, num);
+    free(oct);
+}

@@ -59,7 +59,6 @@ void convertToHex(long int num)
     }
     else
     {
-        num2 = -num;
         if (num2 == 0)
         {
             for (int i = 0; i != 1; i++)
@@ -119,5 +118,38 @@ char* convertToHexrev(long int num)
     }
     rev(hex);
     return(hex);
+    free(hex);
+}
+
+void tildaHex(long int num)
+{
+    char* hex = NULL;
+    hex = calloc(100, sizeof(char));
+    long int num2 = -num;
+    int i = 0;
+    if (num2 == 0)
+    {
+        for (int i = 0; i != 1; i++)
+        {
+            hex[i] = 48;
+        }
+    }
+    while (num2 != 0)
+    {
+        int temp = 0;
+        temp = num2 % 16;
+        if (temp < 10)
+        {
+            hex[i] = temp + 48;
+        }
+        else
+        {
+            hex[i] = temp + 87;
+        }
+        i++;
+        num2 = num2 / 16;
+    }
+    rev(hex);
+    printf("-0x%s (%d)", hex, num);
     free(hex);
 }
