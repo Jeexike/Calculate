@@ -25,7 +25,13 @@ int isDuodigit(char c)
 char* convertToDuoret(long int num)
 {
     long int num2 = num;
-    char* duo = (char*)calloc(100, sizeof(char));
+    char* duo = NULL;
+    duo = (char*)calloc(100, sizeof(char));
+    if (duo == NULL)
+    {
+        printf("Memory allocation error\n");
+        exit(1);
+    }
     int i = 0;
     if (num2 == 0)
     {

@@ -11,6 +11,11 @@ void rev(char* mass)
 {
     char *out = NULL;
     out = (char*)malloc(sizeof(char) * strlen(mass));
+	if (out == NULL)
+	{
+		printf("Memory allocation error\n");
+		exit(1);
+	}
     strncpy(out, mass, strlen(mass));
     for (int i = strlen(mass); i > 0; i--)
     {
@@ -113,9 +118,13 @@ bool checkDenial(char* operand1, char oper)
 		{
 			return true;
 		}
-		else
+		else if (operand1[0] != '-')
 		{
 			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 	else

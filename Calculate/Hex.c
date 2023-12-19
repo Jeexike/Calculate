@@ -27,6 +27,11 @@ void convertToHex(long int num)
     long int num2 = 0;
     char* hex = NULL;
     hex = calloc(100, sizeof(char));
+    if (hex == NULL)
+    {
+        printf("Memory allocation error\n");
+        exit(1);
+    }
     int i = 0;
     if (num >= 0)
     {
@@ -91,7 +96,13 @@ void convertToHex(long int num)
 char* convertToHexrev(long int num)
 {
     long int num2 = num;
-    char* hex = (char*)calloc(100, sizeof(char));
+    char* hex = NULL;
+    hex = (char*)calloc(100, sizeof(char));
+    if (hex == NULL)
+    {
+        printf("Memory allocation error\n");
+        exit(1);
+    }
     int i = 0;
     if (num2 == 0)
     {
@@ -122,6 +133,11 @@ void tildaHex(long int num)
 {
     char* hex = NULL;
     hex = calloc(100, sizeof(char));
+    if (hex == NULL)
+    {
+        printf("Memory allocation error\n");
+        exit(1);
+    }
     long int num2 = -num;
     int i = 0;
     if (num2 == 0)

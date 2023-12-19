@@ -91,7 +91,13 @@ void convertToOct(long int num)
 char* convertToOctrev(long int num)
 {
     long int num2 = num;
-    char* oct = (char*)calloc(100, sizeof(char));
+    char* oct = NULL;
+    oct = (char*)calloc(100, sizeof(char));
+    if (oct == NULL)
+    {
+        printf("Memory allocation error\n");
+        exit(1);
+    }
     int i = 0;
     if (num2 == 0)
     {
@@ -117,6 +123,11 @@ void tildaOct(long int num)
     long int num2 = -num;
     char* oct = NULL;
     oct = calloc(100, sizeof(char));
+    if (oct == NULL)
+    {
+        printf("Memory allocation error\n");
+        exit(1);
+    }
     int i = 0;
     if (num2 == 0)
     {

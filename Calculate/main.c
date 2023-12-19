@@ -17,6 +17,11 @@ int main()
 	long int operand1Dec = 0;
 	char** rett = NULL;
 	rett = (char**)calloc(3, sizeof(char*));
+	if (rett == NULL)
+	{
+		printf("Memory allocation error\n");
+		exit(1);
+	}
 	char *operand1 = NULL;
 	char *operand2 = NULL;
 	char oper = '\0';
