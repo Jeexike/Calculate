@@ -163,26 +163,9 @@ int inputCount(char* operand1, char* operand2, char oper, char* input, char** re
 	return count;
 }
 
-char** denial(char* mass)
+void output(char* operand1, char* operand2, char oper, long int operand1Dec, long int operand2Dec)
 {
-	int massLen = strlen(mass);
-	char operator = mass[0];
-	char* operand = (char*)calloc(massLen - 2, sizeof(char));
-	char* result[2];
-	result[0] = (char*)calloc(2, sizeof(char));
-	result[1] = (char*)calloc(massLen - 2, sizeof(char));
-	for (int i = 1; i < massLen - 1; i++)
-	{
-		operand[i - 1] = mass[i];
-		operand[i] = '\0';
-	}
-	result[0][0] = operator;
-	result[1] = operand;
-	return result;
-}
-
-void output(char* operand1, char* operand2, char oper, int operand1Dec, int operand2Dec)
-{
+	char* result = NULL;
 	if ((operand1[1] == 'x' || operand1[1] == 'X') || (operand1[0] == '-' && (operand1[2] == 'x' || operand1[2] == 'X')) ||
 		(operand2[1] == 'x' || operand2[1] == 'X') || (operand2[0] == '-' && (operand2[2] == 'x' || operand2[2] == 'X')))
 	{
@@ -206,13 +189,19 @@ void output(char* operand1, char* operand2, char oper, int operand1Dec, int oper
 			convertToHex(operand1Dec % operand2Dec);
 			break;
 		case '&':
-			printf("0x%s (%d)", convertToHexrev(operand1Dec & operand2Dec), operand1Dec & operand2Dec);
+			result = convertToHexrev(operand1Dec & operand2Dec);
+			printf("0x%s (%d)\n", result, operand1Dec & operand2Dec);
+			free(result);
 			break;
 		case '|':
-			printf("0x%s (%d)", convertToHexrev(operand1Dec | operand2Dec), operand1Dec | operand2Dec);
+			result = convertToHexrev(operand1Dec | operand2Dec);
+			printf("0x%s (%d)\n", result, operand1Dec | operand2Dec);
+			free(result);
 			break;
 		case '^':
-			printf("0x%s (%d)", convertToHexrev(operand1Dec ^ operand2Dec), operand1Dec ^ operand2Dec);
+			result = convertToHexrev(operand1Dec ^ operand2Dec);
+			printf("0x%s (%d)\n", result, operand1Dec ^ operand2Dec);
+			free(result);
 			break;
 		default:
 			printf("Error: incorrect input\n");
@@ -241,13 +230,19 @@ void output(char* operand1, char* operand2, char oper, int operand1Dec, int oper
 			convertToOct(operand1Dec % operand2Dec);
 			break;
 		case '&':
-			printf("0%s (%d)", convertToOctrev(operand1Dec & operand2Dec), operand1Dec & operand2Dec);
+			result = convertToOctrev(operand1Dec & operand2Dec);
+			printf("0%s (%d)\n", result, operand1Dec & operand2Dec);
+			free(result);
 			break;
 		case '|':
-			printf("0%s (%d)", convertToOctrev(operand1Dec | operand2Dec), operand1Dec | operand2Dec);
+			result = convertToOctrev(operand1Dec | operand2Dec);
+			printf("0%s (%d)\n", result, operand1Dec | operand2Dec);
+			free(result);
 			break;
 		case '^':
-			printf("0%s (%d)", convertToOctrev(operand1Dec ^ operand2Dec), operand1Dec ^ operand2Dec);
+			result = convertToOctrev(operand1Dec ^ operand2Dec);
+			printf("0%s (%d)\n", result, operand1Dec ^ operand2Dec);
+			free(result);
 			break;
 		default:
 			printf("Error: incorrect input\n");
@@ -275,13 +270,19 @@ void output(char* operand1, char* operand2, char oper, int operand1Dec, int oper
 			convertToDuo(operand1Dec % operand2Dec);
 			break;
 		case '&':
-			printf("%s (%d)", convertToDuoret(operand1Dec & operand2Dec), operand1Dec & operand2Dec);
+			result = convertToDuoret(operand1Dec & operand2Dec);
+			printf("%s (%d)\n", result, operand1Dec & operand2Dec);
+			free(result);
 			break;
 		case '|':
-			printf("%s (%d)", convertToDuoret(operand1Dec | operand2Dec), operand1Dec | operand2Dec);
+			result = convertToDuoret(operand1Dec | operand2Dec);
+			printf("%s (%d)\n", result, operand1Dec | operand2Dec);
+			free(result);
 			break;
 		case '^':
-			printf("%s (%d)", convertToDuoret(operand1Dec ^ operand2Dec), operand1Dec ^ operand2Dec);
+			result = convertToDuoret(operand1Dec ^ operand2Dec);
+			printf("%s (%d)\n", result, operand1Dec ^ operand2Dec);
+			free(result);
 			break;
 		default:
 			printf("Error: incorrect input\n");
@@ -289,7 +290,7 @@ void output(char* operand1, char* operand2, char oper, int operand1Dec, int oper
 	}
 }
 
-void outputDenial(char* operand1, char oper, int operand1Dec)
+void outputDenial(char* operand1, char oper, long int operand1Dec)
 {
 	if (operand1[1] == 'x' || operand1[1] == 'X')
 	{

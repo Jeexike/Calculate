@@ -93,7 +93,7 @@ long int convertToDecimal(char* num)
         }
         
     }
-    else if ((num[0] != '0' || (num[0] == '-' && num[1] != '0')) || (num[0] == '0' && num[1] == '/0'))
+    else if ((num[0] != '0' || (num[0] == '-' && num[1] != '0')) || (num[0] == '0' && num[1] == '\0'))
     {
         if (num[0] != '-')
         {

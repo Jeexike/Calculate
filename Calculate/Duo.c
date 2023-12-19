@@ -24,9 +24,8 @@ int isDuodigit(char c)
 
 char* convertToDuoret(long int num)
 {
-    long long int num2 = num;
-    char duo[100];
-    memset(duo, '\0', 100);
+    long int num2 = num;
+    char* duo = (char*)calloc(100, sizeof(char));
     int i = 0;
     if (num2 == 0)
     {
@@ -49,7 +48,7 @@ char* convertToDuoret(long int num)
 
 void convertToDuo(long int num)
 {
-    long int base = 1;
+    int base = 1;
     long int res = 0;
     int last;
     long int num2 = num;
@@ -59,33 +58,12 @@ void convertToDuo(long int num)
         res += last * base;
         base *= 10;
     }
-    printf("%d (%d)", res, num);
+    printf("%d (%d)\n", res, num);
 }
 
 void tilda(long int num)
 {
-    /*long int num2 = num;
-    char duo[100];
-    memset(duo, '\0', 100);
-    int i = 0;
-    if (num2 == 0)
-    {
-        for (int i = 0; i != 1; i++)
-        {
-            duo[i] = 48;
-        }
-    }
-    while (num2 != 0)
-    {
-        int temp = 0;
-        temp = num2 % 2;
-        duo[i] = temp + 48;
-        i++;
-        num2 = num2 / 2;
-    }
-    rev(duo);
-    return duo;*/
-    long int base = 1;
+    int base = 1;
     long int res = 0;
     int last;
     long int num2 = num;
@@ -95,5 +73,5 @@ void tilda(long int num)
         res += last * base;
         base *= 10;
     }
-    printf("%d (%d)", res, num);
+    printf("%d (%d)\n", res, num);
 }

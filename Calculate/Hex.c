@@ -24,7 +24,7 @@ int isHexdigit(char c)
 
 void convertToHex(long int num)
 {
-    long int num2 = NULL;
+    long int num2 = 0;
     char* hex = NULL;
     hex = calloc(100, sizeof(char));
     int i = 0;
@@ -54,7 +54,7 @@ void convertToHex(long int num)
             num2 = num2 / 16;
         }
         rev(hex);
-        printf("0x%s (%d)", hex, num);
+        printf("0x%s (%d)\n", hex, num);
         free(hex);
     }
     else
@@ -82,7 +82,7 @@ void convertToHex(long int num)
             num2 = num2 / 16;
         }
         rev(hex);
-        printf("-0x%s (%d)", hex, num);
+        printf("-0x%s (%d)\n", hex, num);
         free(hex);
     }
     
@@ -91,15 +91,12 @@ void convertToHex(long int num)
 char* convertToHexrev(long int num)
 {
     long int num2 = num;
-    char* hex = NULL;
-    hex = calloc(100, sizeof(char));
+    char* hex = (char*)calloc(100, sizeof(char));
     int i = 0;
     if (num2 == 0)
     {
-        for (int i = 0; i != 1; i++)
-        {
-            hex[i] = 48;
-        }
+        hex[0] = '0';
+        return hex;
     }
     while (num2 != 0)
     {
@@ -107,19 +104,19 @@ char* convertToHexrev(long int num)
         temp = num2 % 16;
         if (temp < 10)
         {
-            hex[i] = temp + 48;
+            hex[i] = temp + '0';
         }
         else
         {
-            hex[i] = temp + 87;
+            hex[i] = temp + 'a' - 10;
         }
         i++;
         num2 = num2 / 16;
     }
     rev(hex);
-    return(hex);
-    free(hex);
+    return hex;
 }
+
 
 void tildaHex(long int num)
 {
@@ -150,6 +147,6 @@ void tildaHex(long int num)
         num2 = num2 / 16;
     }
     rev(hex);
-    printf("-0x%s (%d)", hex, num);
+    printf("-0x%s (%d)\n", hex, num);
     free(hex);
 }

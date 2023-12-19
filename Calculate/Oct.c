@@ -46,7 +46,7 @@ void convertToOct(long int num)
             num2 = num2 / 8;
         }
         rev(oct);
-        printf("0%s (%d)", oct, num);
+        printf("0%s (%d)\n", oct, num);
         free(oct);
     }
     else
@@ -71,7 +71,7 @@ void convertToOct(long int num)
             num2 = num2 / 8;
         }
         rev(oct);
-        printf("-0%s (%d)", oct, num);
+        printf("-0%s (%d)\n", oct, num);
         free(oct);
     }
     /*int base = 1;
@@ -91,8 +91,7 @@ void convertToOct(long int num)
 char* convertToOctrev(long int num)
 {
     long int num2 = num;
-    char* oct = NULL;
-    oct = calloc(100, sizeof(char));
+    char* oct = (char*)calloc(100, sizeof(char));
     int i = 0;
     if (num2 == 0)
     {
@@ -111,7 +110,6 @@ char* convertToOctrev(long int num)
     }
     rev(oct);
     return(oct);
-    free(oct);
 }
 
 void tildaOct(long int num)
@@ -136,6 +134,6 @@ void tildaOct(long int num)
         num2 = num2 / 8;
     }
     rev(oct);
-    printf("-0%s (%d)", oct, num);
+    printf("-0%s (%d)\n", oct, num);
     free(oct);
 }

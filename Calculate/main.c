@@ -14,12 +14,12 @@ int main()
 	printf("Enter the expression: ");
 	fgets(input, n, stdin);
 
-	long int operand1Dec = NULL;
+	long int operand1Dec = 0;
 	char** rett = NULL;
 	rett = (char**)calloc(3, sizeof(char*));
 	char *operand1 = NULL;
 	char *operand2 = NULL;
-	char oper = NULL;
+	char oper = '\0';
 
 	int count = inputCount(operand1, operand2, oper, input, rett);
 
@@ -38,18 +38,19 @@ int main()
 	}
 
 	process2:
-		rett = denial(rett[0]);
-		operand1 = rett[1];
-		oper = rett[0][0];
+		rett[0][strlen(rett[0]) - 1] = '\0';
 
-		operand1Dec = convertToDecimal(operand1);
-
-		if (!checkDenial(operand1, oper))
+		if (!checkDenial(rett[0] + 1, rett[0][0]))
 		{
-			goto deallocate;
+			printf("Error: incorrect input\n");
+			free(rett);
+			return 0;
 		}
 
-		outputDenial(operand1, oper, operand1Dec);
+		operand1Dec = convertToDecimal(rett[0] + 1);
+
+		outputDenial(rett[0] + 1, rett[0][0], operand1Dec);
+		free(rett);
 		return 0;
 
 	process1:
@@ -60,7 +61,7 @@ int main()
 		operand1Dec = convertToDecimal(operand1);
 		long int operand2Dec = convertToDecimal(operand2);
 	
-		if (!check(operand1, operand2, oper) && !checkOperator(oper))
+		if (!check(operand1, operand2, oper) && !checkOperator(rett[1]))
 		{
 			goto deallocate;
 		}
