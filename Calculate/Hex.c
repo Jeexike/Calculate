@@ -128,7 +128,6 @@ char* convertToHexrev(long int num)
     return hex;
 }
 
-
 void tildaHex(long int num)
 {
     char* hex = NULL;

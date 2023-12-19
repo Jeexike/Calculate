@@ -92,14 +92,14 @@ bool check(char* operand1, char* operand2, char oper)
 		if ((operand1[0] == '0' && operand2[0] != '0')
 			|| (operand1[0] != '0' && operand2[0] == '0'))
 		{
-			printf("Error: incorrect input\n");
+			printf("Error: incorrect operator input\n");
 			printf("Error: the number systems do not match\n");
 			return false;
 		}
 		else if ((operand1[1] == 'x' && operand2[1] != 'x') || (operand1[1] != 'x' && operand2[1] == 'x') ||
 			(operand1[1] == 'X' && operand2[1] != 'X') || (operand1[1] != 'X' && operand2[1] == 'X'))
 		{
-			printf("Error: incorrect input\n");
+			printf("Error: incorrect operator input\n");
 			printf("Error: the number systems do not match\n");
 			return false;
 		}
@@ -140,9 +140,9 @@ int inputCount(char* operand1, char* operand2, char oper, char* input, char** re
 
 	while (token != NULL)
 	{
-		if (count < 3)
+		if (count < 3 || count == -99)
 		{
-			if (count == 2)
+			if (count == 2 || count == -99)
 			{
 				int operandLen = strlen(token);
 				if (token[operandLen - 1] == '\n') {
@@ -159,7 +159,7 @@ int inputCount(char* operand1, char* operand2, char oper, char* input, char** re
 			{
 				if (!checkOperator(token))
 				{
-					count += 1000;
+					count -= 101;
 				}
 				rett[1] = token;
 			}

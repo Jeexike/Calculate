@@ -38,7 +38,8 @@ int main()
 	}
 	else
 	{
-		printf("Error: incorrect input\n");
+		printf("Error: incorrect operator input\n");
+		check(rett[0], rett[2], rett[1][0]);
 		goto deallocate;
 	}
 
