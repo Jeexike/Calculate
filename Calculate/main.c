@@ -61,7 +61,7 @@ int main()
 		operand1Dec = convertToDecimal(operand1);
 		long int operand2Dec = convertToDecimal(operand2);
 	
-		if (!check(operand1, operand2, oper) && !checkOperator(rett[1]))
+		if (!check(operand1, operand2, oper) || !checkOperator(rett[1]))
 		{
 			goto deallocate;
 		}
